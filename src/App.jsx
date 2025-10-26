@@ -2,6 +2,7 @@ import HeroSection from './components/HeroSection.jsx';
 import DashboardGlance from './components/DashboardGlance.jsx';
 import AdvisoryInsights from './components/AdvisoryInsights.jsx';
 import SarthiChat from './components/SarthiChat.jsx';
+import MapSection from './components/MapSection.jsx';
 import { useState } from 'react';
 import { Sprout } from 'lucide-react';
 
@@ -29,6 +30,7 @@ function App() {
             <a href="#" className="hover:text-[#1e40af]">Home</a>
             <a href="#glance" className="hover:text-[#1e40af]">Dashboard</a>
             <a href="#advisory" className="hover:text-[#1e40af]">Advisory</a>
+            <a href="#map" className="hover:text-[#1e40af]">Map</a>
           </nav>
         </div>
       </header>
@@ -42,6 +44,10 @@ function App() {
 
         <div id="advisory">
           <AdvisoryInsights />
+        </div>
+
+        <div id="map">
+          <MapSection />
         </div>
       </main>
 

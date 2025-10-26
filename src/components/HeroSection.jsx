@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Globe2, MapPin, Sprout } from 'lucide-react';
+import { Globe2, MapPin, Sprout, Sparkles } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
 export default function HeroSection({ onGetStarted }) {
@@ -8,13 +8,23 @@ export default function HeroSection({ onGetStarted }) {
   const [location, setLocation] = useState('');
 
   return (
-    <section className="relative w-full min-h-[80vh] md:h-[88vh] overflow-hidden rounded-2xl md:rounded-3xl bg-[#0b1020]">
+    <section className="relative w-full min-h-[80vh] md:h-[88vh] overflow-hidden rounded-2xl md:rounded-3xl bg-black">
+      {/* Spline cover background */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/igThmltzmqv5hkWo/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <Spline scene="https://prod.spline.design/6tUXqVcUA0xgJugv/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Soft gradient veil for readability (does not block interaction) */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0b1020]/40 via-[#0b1020]/60 to-[#0b1020]" />
+      {/* Readability veil that does not block interactions */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black" />
+
+      {/* Subtle animated edge glow */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 1.2 }}
+        className="pointer-events-none absolute -inset-24 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(20,255,120,0.12),transparent_70%)]"
+      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 md:py-16">
         <motion.div
@@ -23,8 +33,8 @@ export default function HeroSection({ onGetStarted }) {
           transition={{ duration: 0.8 }}
           className="inline-flex items-center gap-2 rounded-full bg-white/10 text-white/80 px-3 py-1.5 backdrop-blur border border-white/10"
         >
-          <Sprout className="w-4 h-4 text-[#16a34a]" />
-          <span className="text-xs sm:text-sm">KrishiSarthi • Your AI Oilseed Partner</span>
+          <Sprout className="w-4 h-4 text-emerald-300" />
+          <span className="text-xs sm:text-sm">KrishiSarthi • AI for Oilseed Farmers</span>
         </motion.div>
 
         <motion.h1
@@ -33,19 +43,20 @@ export default function HeroSection({ onGetStarted }) {
           transition={{ duration: 0.9, delay: 0.1 }}
           className="mt-6 text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white"
         >
-          Boost Your Oilseed Yield with AI
-          <span className="block text-[#a5b4fc]">Personalized advice in your language</span>
+          Grow Smarter with Real‑time Field Intelligence
+          <span className="block text-emerald-300/90">Dark topo map • neon contours • data aware</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-4 md:mt-5 text-base md:text-lg text-white/80 max-w-2xl"
+          className="mt-4 md:mt-5 text-base md:text-lg text-white/85 max-w-2xl"
         >
-          A powerful yet simple digital companion for Indian oilseed farmers. Make decisions with confidence—backed by data, delivered with care.
+          Personalized guidance for sowing, irrigation, pests, and harvest—delivered in your language and tuned to your location.
         </motion.p>
 
+        {/* Inputs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,11 +90,23 @@ export default function HeroSection({ onGetStarted }) {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onGetStarted?.(location, lang)}
-              className="shrink-0 rounded-lg bg-[#1e40af] hover:bg-[#1b3a9b] text-white px-3 py-2 font-medium shadow-lg shadow-blue-900/30"
+              className="shrink-0 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 font-medium shadow-lg shadow-emerald-900/30"
             >
               Get Started
             </motion.button>
           </div>
+        </motion.div>
+
+        {/* Decorative sparkles for flair */}
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="mt-6 flex items-center gap-2 text-emerald-200/90"
+        >
+          <Sparkles className="w-4 h-4" />
+          <span className="text-sm">Live contours react to your pointer — explore the terrain.</span>
         </motion.div>
       </div>
     </section>
